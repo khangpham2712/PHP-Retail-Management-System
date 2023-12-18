@@ -41,9 +41,9 @@ const Metabase = () => {
 
   return (
     <>
-      <h1>Metabase Report</h1>
+      <h1>Dashboard</h1>
       <iframe
-        title="metabase"
+        title="Dashboard"
         src={iframeUrl}
         width="100%"
         height="1000"

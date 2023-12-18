@@ -603,8 +603,8 @@ export const reportModule = {
         },
         {
           id: 21.11,
-          title: "Metabase",
-          key: "Metabase",
+          title: "Biểu đồ cá nhân hoá",
+          key: "Biểu đồ cá nhân hoá",
           url: "/home/manager/metabase",
         },
       ],
