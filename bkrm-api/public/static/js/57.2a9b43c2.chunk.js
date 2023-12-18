@@ -1,0 +1,2 @@
+(this.webpackJsonpbkrm_thesis=this.webpackJsonpbkrm_thesis||[]).push([[57],{1804:function(e,t,a){"use strict";var s=a(212),h=a(213);Object.defineProperty(t,"__esModule",{value:!0}),t.default=void 0;var i=h(a(0)),l=(0,s(a(214)).default)(i.createElement("path",{d:"M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z"}),"FormatItalic");t.default=l}}]);
+//# sourceMappingURL=57.2a9b43c2.chunk.js.map

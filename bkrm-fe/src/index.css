@@ -1,0 +1,172 @@
+@import '~antd/dist/antd.css';
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+video {
+  outline: 0px;
+}
+.card1:hover {
+  box-shadow: -1px 10px 29px 0px rgba(0, 0, 0, 0.8);
+}
+
+.carousel .thumb.selected,
+.carousel .thumb:hover {
+  border: 3px solid rgb(255, 253, 253);
+}
+.carousel .thumb,
+.carousel .thumb .img {
+  opacity: 0.4;
+}
+.carousel .thumb.selected,
+.carousel .thumb:hover .img {
+  opacity: 1;
+}
+
+#map {
+  height: 100%;
+}
+
+/* img:hover {
+  animation: shake 0.9s;
+  animation-iteration-count: infinite;
+} */
+
+/* @keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+} */
+
+#gift {
+  animation: shake 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(0.5px, 0.5px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-0.5px, -1px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-1.5px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(1.5px, 1px) rotate(0deg);
+  }
+  40% {
+    transform: translate(0.5px, -0.5px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-0.5px, 1px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-1.5px, 0.5px) rotate(0deg);
+  }
+  70% {
+    transform: translate(1.5px, 0.5px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-0.5px, -0.5px) rotate(1deg);
+  }
+  90% {
+    transform: translate(0.5px, 1px) rotate(0deg);
+  }
+  100% {
+    transform: translate(0.5px, -1px) rotate(-1deg);
+  }
+}
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* color: red; */
+  opacity: 1; /* Firefox */
+}
+
+.ql-editor {
+  min-height: 250px !important;
+  max-height: 600px;
+  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+.ql-toolbar {
+  border-radius: 10px 10px 0px 0px;
+}
+.ql-container {
+  border-radius: 0px 0px 10px 10px;
+}
+.ql-editor:focus {
+  border: 1px solid #a2ddff !important;
+  box-shadow: 0 0 0 0.2rem rgba(169, 241, 252, 0.25) !important;
+}
+::marker {
+  /* color: blue;
+  font-size: 1.2em; */
+  display: none;
+}
+li {
+  list-style: none;
+}
+
+:root .ant-select-arrow{
+  display: block;
+  z-index: 1000000;
+  /* color:rgb(104, 0, 179); */
+  /* color:rgb(0, 0, 0); */
+} 
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border-radius: 4px;
+}
+
+/* body {
+  text-overflow: clip;
+  letter-spacing: 3px;
+  text-shadow: -3px 0 1px cyan, 3px 0 1px red;
+} */
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 0px;
+}
+/* width */
+pre::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+pre {
+  font-size: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9;
+  border-radius: 100px;
+}

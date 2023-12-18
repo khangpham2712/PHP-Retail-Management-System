@@ -1,0 +1,51 @@
+[
+    {
+        "created_at": "2021-10-30T13:58:58.000000Z",
+        "date_of_birth": "2000-01-01",
+        "email": "test1@test.com",
+        "email_verified_at": null,
+        "gender": "male",
+        "name": "ly quoc hai",
+        "password": "$2y$10$br7oJVATRm6FXTEN2yHsPOwlkFDd3huuVPfUwnAcmb4c.jiafoitO",
+        "phone": "090925256",
+        "remember_token": null,
+        "status": "active",
+        "store_id": 5,
+        "updated_at": "2021-10-30T13:58:58.000000Z",
+        "uuid": "ae187c82-cea6-478e-99eb-8e265348f935"
+    },
+    {
+        "id":2,
+        "name":"Mai Huynh Tuan Kiet",
+        "phone":"0903829833",
+        "email":"hello@gmail.com",
+        "address":"Ly thuong Kiet",
+        "debt":0,
+        "total_cost":20000,
+        "idCard":"0793000012430",
+        "function":"Bán hàng"
+    },
+    {
+        "id":3,
+        "name":"Mai Truong Khang",
+        "phone":"0903829831",
+        "email":"hello@gmail.co",
+        "address":"Ly thuong Kiet",
+        "debt":200,
+        "total_cost":20000,
+        "idCard":"0793000012430",
+        "function":"Quản lý"
+    },
+    {
+        "id":4,
+        "name":"Dang Gia Le",
+        "phone":"0903829833",
+        "email":"hello@gmail.com",
+        "address":"Ly thuong Kiet",
+        "debt":200,
+        "total_cost":20000,
+        "idCard":"0793000012430",
+        "function":"HR"
+    }
+
+]

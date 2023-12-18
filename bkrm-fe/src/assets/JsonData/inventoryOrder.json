@@ -1,0 +1,74 @@
+[
+    {
+        "id":1,
+        "date":"22/12/2008",
+        "supplier":"Gia Le",
+        "employee":"Minh Tri",
+        "total":3000,
+        "discount":200,
+        "remain":100,
+        "debt":0,
+        "branch":"Quận 1",
+        "payment":"Thẻ",
+        "list":[
+            {
+                "id": "1",
+                "name": "Quan dai",
+                "price":200,
+                "import_price": 100,
+                "barcode": 300,
+                "category_id":"1",
+                "status":"active",
+                "image_url":"/src/assets/img/product/1.jpg",
+                "quantity":1
+            },
+            {
+                "id": "3",
+                "name": "Ao dai",
+                "price":250,
+                "import_price": 120,
+                "barcode": 322,
+                "category_id":"1",
+                "status":"active",
+                "image_url":"/src/assets/img/product/11127.jpg",
+                "quantity":2
+            }
+        ]
+    },
+    {
+        "id":2,
+        "date":"25/12/2008",
+        "supplier":"Hai Ly",
+        "employee":"Khang Mai",
+        "total":3300,
+        "discount":300,
+        "remain":300,
+        "debt":100,
+        "branch":"Quận 3",
+        "payment":"Tiền mặt",
+        "list":[
+            {
+                "id": "3",
+                "name": "Ao dai",
+                "price":250,
+                "import_price": 120,
+                "barcode": 322,
+                "category_id":"1",
+                "status":"active",
+                "image_url":"/src/assets/img/product/11127.jpg",
+                "quantity":3
+            },
+            {
+                "id": "9",
+                "name": "tap",
+                "price":203,
+                "import_price": 152,
+                "barcode": 350,
+                "category_id":"4",
+                "status":"active",
+                "image_url":"/src/assets/img/product/1.jpg",
+                "quantity":1
+            }
+        ]
+    }
+]

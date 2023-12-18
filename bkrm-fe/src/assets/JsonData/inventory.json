@@ -1,0 +1,53 @@
+
+[
+    {
+        "id": 1,
+        "name": "Sản phẩm 1",
+        "price":200,
+        "import_price": 100,
+        "barcode": 23443355545,
+        "category_id":"1",
+        "status":"active",
+        "image_url":"/src/assets/img/product/1.jpg",
+        "quantity":0,
+        "category":"Thuc pham"
+    },
+    {
+        "id": 2,
+        "name": "Sản phẩm 2",
+        "price":340,
+        "import_price": 200,
+        "barcode": 23443355545,
+        "category_id":"1",
+        "status":"active",
+        "image_url":"/src/assets/img/product/199.jpg",
+        "quantity":2,
+        "category":"Banh keo"
+    },
+    {
+        "id": 3,
+        "name": "Sản phẩm 3",
+        "price":250,
+        "import_price": 120,
+        "barcode": 23443355545,
+        "category_id":"1",
+        "status":"active",
+        "image_url":"/src/assets/img/product/11127.jpg",
+        "quantity":34,
+        "category":"Do dung"
+    },
+    {
+        "id": 4,
+        "name": "Sản phẩm 4",
+        "price":200,
+        "import_price": 100,
+        "barcode": 23443355545,
+        "category_id":"2",
+        "status":"active",
+        "image_url":"/src/assets/img/product/9830.jpg",
+        "quantity":10,
+        "category":"Quan ao"
+    }
+
+
+]

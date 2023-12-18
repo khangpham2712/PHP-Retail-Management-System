@@ -1,0 +1,63 @@
+[
+    {
+        "id":1,
+        "import_id":"1",
+        "date":"25/12/2008",
+        "supplier":"Hai",
+        "employee":"Minh Tri",
+        "total":3000,
+        "remain":100,
+        "branch":"Quận 5",
+        "payment":"Tiền mặt",
+        "list":[
+            {
+                "product_id": "3",
+                "name": "Ao dai",
+                "price":250,
+                "import_price": 120,
+                "barcode": 322,
+                "category_id":"1",
+                "status":"active",
+                "image_url":"/src/assets/img/product/11127.jpg",
+                "quantity":2
+            }
+        ]
+    },
+    {
+        "id":2,
+        "import_id":"2",
+        "date":"25/12/2008",
+        "supplier":"Hai Ly",
+        "employee":"Khang Mai",
+        "total":3300,
+        "discount":300,
+        "remain":300,
+        "branch":"Quận 1",
+        "payment":"Thẻ",
+        
+        "list":[
+            {
+                "product_id": "3",
+                "name": "Ao dai",
+                "price":250,
+                "import_price": 120,
+                "barcode": 322,
+                "category_id":"1",
+                "status":"active",
+                "image_url":"/src/assets/img/product/11127.jpg",
+                "quantity":1
+            },
+            {
+                "product_id": "9",
+                "name": "tap",
+                "price":203,
+                "import_price": 152,
+                "barcode": 350,
+                "category_id":"4",
+                "status":"active",
+                "image_url":"/src/assets/img/product/1.jpg",
+                "quantity":1
+            }
+        ]
+    }
+]

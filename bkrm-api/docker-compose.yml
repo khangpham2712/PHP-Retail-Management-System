@@ -1,0 +1,41 @@
+version: '3.5'
+
+services:
+    api:
+        build:
+            context: '.'
+            args:
+                uid: 1000
+        container_name: bkrm-php-app
+        environment:
+            - APACHE_RUN_USER=#1000
+            - APACHE_RUN_GROUP=#1000
+        volumes:
+            - .:/var/www/html
+            - ./000-default.conf:/etc/apache2/sites-available/000-default.conf
+        ports:
+            - 80:80
+        networks:
+            backend:
+                aliases:
+                    - api
+
+    mysql-db:
+        image: mysql:5.7
+        container_name: bkrm-mysql-db
+        volumes:
+            - ./bkrm_api.sql:/docker-entrypoint-initdb.d/bkrm_api.sql
+            - ./data/mysql:/var/lib/mysql
+        ports:
+            - 3306:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=tiger
+            - MYSQL_DATABASE=bkrm_api
+        networks:
+            backend:
+                aliases:
+                    - bkrm_api
+
+networks:
+    backend:
+        name: bkrm-network

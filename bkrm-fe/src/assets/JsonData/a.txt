@@ -1,0 +1,37 @@
+    // ,
+    // {
+    //     "id": 11,
+    //     "name": "Máy tính cầm tay",
+    //     "price":223,
+    //     "import_price": 152,
+    //     "barcode": 23443355545,
+    //     "category_id":"4",
+    //     "status":"active",
+    //     "image_url":"/src/assets/img/product/1.jpg",
+    //     "quantity":3,
+    //     "category":"Quan ao"
+    // },
+    // {
+    //     "id": 12,
+    //     "name": "Tập vở",
+    //     "price":203,
+    //     "import_price": 152,
+    //     "barcode": 23443355545,
+    //     "category_id":"4",
+    //     "status":"active",
+    //     "image_url":"/src/assets/img/product/1.jpg",
+    //     "quantity":45,
+    //     "category":"Quan ao"
+    // },
+    // {
+    //     "id": 13,
+    //     "name": "Máy tính",
+    //     "price":203,
+    //     "import_price": 152,
+    //     "barcode": 23443355545,
+    //     "category_id":"4",
+    //     "status":"active",
+    //     "image_url":"/src/assets/img/product/1.jpg",
+    //     "quantity":0,
+    //     "category":"Quan ao"
+    // }

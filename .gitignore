@@ -1,0 +1,61 @@
+.DS_Store
+
+
+
+# --------------------------------------------------------------
+
+
+
+# gitignore for backend
+
+bkrm-api/node_modules
+bkrm-api/public/hot
+bkrm-api/public/storage
+bkrm-api/storage/*.key
+bkrm-api/vendor
+bkrm-api/.env
+bkrm-api/.env.backup
+bkrm-api/.phpunit.result.cache
+bkrm-api/docker-compose.override.yml
+bkrm-api/Homestead.json
+bkrm-api/Homestead.yaml
+bkrm-api/npm-debug.log
+bkrm-api/yarn-error.log
+bkrm-api/.idea
+bkrm-api/.vscode
+bkrm-api/data
+bkrm-api/.DS_Store
+
+
+
+# --------------------------------------------------------------
+
+
+
+# gitignore for frontend
+
+# dependencies
+bkrm-fe/node_modules
+bkrm-fe/.pnp
+bkrm-fe/.pnp.js
+
+# testing
+bkrm-fe/coverage
+
+# production
+bkrm-fe/build
+
+bkrm-fe/.idea
+# misc
+bkrm-fe/.DS_Store
+bkrm-fe/.env.local
+bkrm-fe/.env.development.local
+bkrm-fe/.env.test.local
+bkrm-fe/.env.production.local
+
+bkrm-fe/npm-debug.log*
+bkrm-fe/yarn-debug.log*
+bkrm-fe/yarn-error.log*
+bkrm-fe/package-lock.json
+bkrm-fe/package-lock.json
+bkrm-fe/yarn.lock

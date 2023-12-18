@@ -1,0 +1,33 @@
+[
+    {
+        "id":1,
+        "name":"Khoa Bach ",
+        "phone":"0938919001",
+        "email":"hello@gmail.com",
+        "address":"Ly thuong Kiet",
+        "debt":2000,
+        "total_cost":2000,
+        "img":""
+    },
+    {
+        "id":2,
+        "name":"Bốn đôi thông",
+        "phone":"0903829833",
+        "email":"hello@gmail.com",
+        "address":"Ly thuong Kiet",
+        "debt":0,
+        "total_cost":20000,
+        "img":""
+    },
+    {
+        "id":3,
+        "name":"Gia Le",
+        "phone":"0903829833",
+        "email":"hello@gmail.com",
+        "address":"Ly thuong Kiet",
+        "debt":200,
+        "total_cost":200000,
+        "img":""
+    }
+
+]

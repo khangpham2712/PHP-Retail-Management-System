@@ -1,0 +1,333 @@
+@ -555,6 +555,107 @@ const Cart = () => {
+    });
+    setCartList(newCartList);
+  };
+  useEffect(() => {
+    let discountPro = 0
+    if(cartList[selectedIndex]?.selectedPromotion){
+      let bestDetailSelectedCondition = cartList[selectedIndex]?.selectedPromotion?.detailCondition?.map((pro) =>{if (Number(cartList[selectedIndex].total_amount) >= Number(pro.totalCost)) {return pro}else{return null}})
+      bestDetailSelectedCondition =bestDetailSelectedCondition?.filter(item => item !== null)[0]
+      discountPro= cartList[selectedIndex]?.selectedPromotion?.discountKey ==="invoice" && bestDetailSelectedCondition?.type==='%' ? (Number(bestDetailSelectedCondition?.discountValue) * Number(cartList[selectedIndex].total_amount)/100) : Number(bestDetailSelectedCondition?.discountValue) ;
+    }
+    let newCartList = update(cartList, {
+      [selectedIndex]: {
+        discountPro: { $set: discountPro },
+      },
+    }) 
+
+    setCartList(newCartList);
+    
+  }, [cartList[selectedIndex].total_amount]);
+
+  useEffect(() => {
+    let percentFee = otherfee?.listCost?.reduce((sum,fee)=>fee.type==="%"? sum + Number(fee.value):sum , 0);
+    let totalOtherFee = percentFee * (Number(cartList[selectedIndex].total_amount) - Number(cartList[selectedIndex].discount) - Number(cartList[selectedIndex].discountPro))/100 +  otherFeeMoney
+
+    let newCartList = update(cartList, {
+      [selectedIndex]: {
+        otherFee: { $set:totalOtherFee },
+      },
+    });
+    setCartList(newCartList);
+    
+  }, [cartList[selectedIndex].total_amount, cartList[selectedIndex].discount, cartList[selectedIndex].discountDetail]);
+
+  useEffect(() => {
+    // // if( defaultPaymentAmount){
+      if( defaultPaymentAmount){
+      let newCartList = update(cartList, {
+        [selectedIndex]: {
+          paid_amount: { $set: Number(cartList[selectedIndex].total_amount)  - Number(cartList[selectedIndex].discount) -Number(cartList[selectedIndex].discountPro)  + Number(cartList[selectedIndex].otherFee)  },
+        },
+      }) 
+
+      setCartList(newCartList);
+    }; 
+  }, [cartList[selectedIndex].total_amount ,cartList[selectedIndex].discount, cartList[selectedIndex].discountDetail,cartList[selectedIndex].discountPro, cartList[selectedIndex].otherFee]);
+
+  
+  useEffect(() => {
+    if (store_setting?.customerScore.status) {
+      let newCartList = update(cartList, {
+        [selectedIndex]: {
+          scores: {
+            $set: parseInt(
+              (Number(cartList[selectedIndex].total_amount)  - Number(cartList[selectedIndex].discount) - Number(cartList[selectedIndex].discountPro)+ Number(cartList[selectedIndex].otherFee) ) /
+                store_setting?.customerScore.value
+            ),
+          },
+        },
+      });
+      setCartList(newCartList);
+    }
+  }, [cartList[selectedIndex].total_amount,cartList[selectedIndex].discount, cartList[selectedIndex].discountPro,cartList[selectedIndex].discountDetail, cartList[selectedIndex].otherFee]);
+
+
+  useEffect(() => {
+    if(cartList[selectedIndex].selectedPromotion){
+      let discountPro = cartList[selectedIndex].selectedPromotion?.discountKey ==="invoice" && cartList[selectedIndex].bestDetailSelectedCondition?.type==='%' ? (Number(cartList[selectedIndex].bestDetailSelectedCondition?.discountValue) * Number(cartList[selectedIndex].total_amount)/100) : Number(cartList[selectedIndex].bestDetailSelectedCondition?.discountValue) ;
+      let newCartList = update(cartList, {
+        [selectedIndex]: {discountPro:{ $set: discountPro}},
+      });
+      setCartList(newCartList);
+    }
+  
+  }, [cartList[selectedIndex].bestDetailSelectedPromotion]);
+
+
+
+  useEffect(() => {
+   
+      let discountPro = cartList[selectedIndex].selectedPromotion?.discountKey ==="invoice" && cartList[selectedIndex].bestDetailSelectedCondition?.type==='%' ? (Number(cartList[selectedIndex].bestDetailSelectedCondition?.discountValue) * Number(cartList[selectedIndex].total_amount)/100) : Number(cartList[selectedIndex].bestDetailSelectedCondition?.discountValue) ;
+      let newCartList = update(cartList, {
+        [selectedIndex]: {discountPro:{ $set: discountPro}},
+      });
+      setCartList(newCartList);
+    
+  
+  }, [cartList[selectedIndex].discountDetail]);
+
+
+  // useEffect(() => {
+  //   // if( defaultPaymentAmount){
+  //     if(cartList[selectedIndex].total_amount < Number(cartList[selectedIndex].discount ){
+  //     let newCartList = update(cartList, {
+  //       [selectedIndex]: {
+  //         paid_amount: { $set: Number(cartList[selectedIndex].total_amount)  - Number(cartList[selectedIndex].discount) -Number(cartList[selectedIndex].discountPro)  + Number(cartList[selectedIndex].otherFee)  },
+  //       },
+  //     }) 
+
+  //     setCartList(newCartList);
+  //   }; 
+  // }, [cartList[selectedIndex].total_amount ]);
+
+
+
+  const handleUpdateSelectedPromotion = (selectedPromotion) => {
+    let bestDetailSelectedCondition = selectedPromotion?.detailCondition?.map((pro) =>{if (Number(cartList[selectedIndex].total_amount) >= Number(pro.totalCost)) {return pro}else{return null}})
+    bestDetailSelectedCondition =bestDetailSelectedCondition.filter(item => item !== null)[0]
+@ -563,29 +664,34 @@ const Cart = () => {
+    let newCartList = update(cartList, {
+      [selectedIndex]: { selectedPromotion: { $set: selectedPromotion } ,bestDetailSelectedPromotion:{$set:bestDetailSelectedCondition}},
+    });
+    let discountPro = selectedPromotion.discountKey ==="invoice" && bestDetailSelectedCondition.type==='%' ? (Number(bestDetailSelectedCondition.discountValue) * Number(cartList[selectedIndex].total_amount)/100) : Number(bestDetailSelectedCondition.discountValue) ;
+
+
+    // let discountPro = selectedPromotion.discountKey ==="invoice" && bestDetailSelectedCondition.type==='%' ? (Number(bestDetailSelectedCondition.discountValue) * Number(cartList[selectedIndex].total_amount)/100) : Number(bestDetailSelectedCondition.discountValue) ;
+ 
+
+    newCartList = update(newCartList, {
+      [selectedIndex]: {discountPro:{ $set: discountPro}},
+    });
+    let percentFee = otherfee?.listCost?.reduce((sum,fee)=>fee.type==="%"? sum + Number(fee.value):sum , 0);
+    let totalOtherFee = percentFee * (Number(cartList[selectedIndex].total_amount) - Number(discountPro)- Number(cartList[selectedIndex].discount) )/100 +  otherFeeMoney
+    // newCartList = update(newCartList, {
+    //   [selectedIndex]: {discountPro:{ $set: discountPro}},
+    // });
+
+
+
+    // let percentFee = otherfee?.listCost?.reduce((sum,fee)=>fee.type==="%"? sum + Number(fee.value):sum , 0);
+    // let totalOtherFee = percentFee * (Number(cartList[selectedIndex].total_amount) - Number(discountPro)- Number(cartList[selectedIndex].discount) )/100 +  otherFeeMoney
+
+ 
+    newCartList = update(newCartList, {
+      [selectedIndex]: {
+        otherFee: { $set: totalOtherFee },
+      },
+    }) 
+    // newCartList = update(newCartList, {
+    //   [selectedIndex]: {
+    //     otherFee: { $set: totalOtherFee },
+    //   },
+    // }) 
+    
+    if(defaultPaymentAmount ){
+      newCartList = update(newCartList, {
+        [selectedIndex]: {
+          paid_amount: { $set: Number(cartList[selectedIndex].total_amount) - Number(discountPro) -     Number(cartList[selectedIndex].discount)+ totalOtherFee },
+        },
+      }) 
+    }
+    // if(defaultPaymentAmount ){
+    //   newCartList = update(newCartList, {
+    //     [selectedIndex]: {
+    //       paid_amount: { $set: Number(cartList[selectedIndex].total_amount) - Number(discountPro) -     Number(cartList[selectedIndex].discount)+ totalOtherFee },
+    //     },
+    //   }) 
+    // }
+    setCartList(newCartList);
+  };
+  const handleUpdateBestDetailSelectedPromotion = (bestDetailSelectedPromotion) => {
+@ -609,10 +715,15 @@ const Cart = () => {
+    let totalOtherFee = percentFee * (Number(cartList[selectedIndex].total_amount) - Number(discountUpdate))/100 +  otherFeeMoney
+
+
+    // let newCartList = update(cartList, {
+    //   // [selectedIndex]: { discountDetail: { $set: obj } , discount:{ $set: discountUpdate }, paid_amount:{ $set: (Number(cartList[selectedIndex].total_amount) -Number(discountUpdate)).toString() }},
+    //   [selectedIndex]: defaultPaymentAmount? { discountDetail: { $set: obj } , discount:{ $set: discountUpdate },  otherFee: { $set:totalOtherFee },paid_amount:{ $set: (Number(cartList[selectedIndex].total_amount) -Number(discountUpdate)+ Number(totalOtherFee)).toString() }}:
+    //     { discountDetail: { $set: obj } , discount:{ $set: discountUpdate }, otherFee: { $set:totalOtherFee }} ,
+    // });
+
+    let newCartList = update(cartList, {
+      // [selectedIndex]: { discountDetail: { $set: obj } , discount:{ $set: discountUpdate }, paid_amount:{ $set: (Number(cartList[selectedIndex].total_amount) -Number(discountUpdate)).toString() }},
+      [selectedIndex]: defaultPaymentAmount? { discountDetail: { $set: obj } , discount:{ $set: discountUpdate },  otherFee: { $set:totalOtherFee },paid_amount:{ $set: (Number(cartList[selectedIndex].total_amount) -Number(discountUpdate)+ Number(totalOtherFee)).toString() }}:
+        { discountDetail: { $set: obj } , discount:{ $set: discountUpdate }, otherFee: { $set:totalOtherFee }} ,
+      [selectedIndex]:  { discountDetail: { $set: obj },discount:{ $set: discountUpdate } } ,
+
+    });
+  
+@ -620,43 +731,7 @@ const Cart = () => {
+  };
+
+  const handleUpdateDiscount = (amount) => {
+    // // if (amount > cartList[selectedIndex].total_amount) {
+    // //   return;
+    // // }
+    // let newCartList = update(cartList, {
+
+    //   [selectedIndex]:defaultPaymentAmount? { discount: { $set: amount },paid_amount: { $set: (Number(cartList[selectedIndex].total_amount) -Number(amount)).toString() }  }:
+    //   // [selectedIndex]:defaultPaymentAmount? { discount: { $set: amount }}:
+
+    //   { discount: { $set: amount } },
+
+    // });
+
+
+    // if( defaultPaymentAmount){
+    //   newCartList = update(newCartList, {
+    //     [selectedIndex]: {
+    //       // paid_amount: { $set: (Number(cartList[selectedIndex].total_amount) - Number(amount) + Number(totalOtherFee)).toString() },
+    //     },
+    //   }) };
+
+    // //
+
+    // if (store_setting?.customerScore.status) {
+    //   newCartList = update(newCartList, {
+    //     [selectedIndex]: {
+    //       scores: {
+    //         $set: parseInt(
+    //           (cartList[selectedIndex].total_amount - amount) /
+    //             store_setting?.customerScore.value
+    //         ),
+    //       },
+    //     },
+    //   });
+    // }
+
+
+    // setCartList(newCartList);
+ 
+  };
+
+  const handleCheckDelivery = (delivery) => {
+@ -674,6 +749,8 @@ const Cart = () => {
+  //   // if(bestCondition.totalCost !== )
+  // }, [cartList[selectedIndex].total_amount]);
+
+  
+
+  const updateTotalAmount = () => {
+    let total = 0;
+    cartList[selectedIndex].cartItem.forEach((item) => {
+@ -684,61 +761,51 @@ const Cart = () => {
+      [selectedIndex]: { total_amount: { $set: total } },
+    });
+
+    // newCartList = update(newCartList, {
+    //   [selectedIndex]: {
+    //     paid_amount: { $set: total - cartList[selectedIndex].discount },
+    //   },
+    // }) ;
+    // 
+    // let discountPro = 0
+    // if(cartList[selectedIndex]?.selectedPromotion){
+    //   let bestDetailSelectedCondition = cartList[selectedIndex]?.selectedPromotion?.detailCondition?.map((pro) =>{if (Number(cartList[selectedIndex].total_amount) >= Number(pro.totalCost)) {return pro}else{return null}})
+    //   bestDetailSelectedCondition =bestDetailSelectedCondition?.filter(item => item !== null)[0]
+    //   discountPro= cartList[selectedIndex]?.selectedPromotion?.discountKey ==="invoice" && bestDetailSelectedCondition?.type==='%' ? (Number(bestDetailSelectedCondition?.discountValue) * Number(total)/100) : Number(bestDetailSelectedCondition?.discountValue) ;
+
+    //
+    let discountPro = 0
+    if(cartList[selectedIndex]?.selectedPromotion){
+      let bestDetailSelectedCondition = cartList[selectedIndex]?.selectedPromotion?.detailCondition?.map((pro) =>{if (Number(cartList[selectedIndex].total_amount) >= Number(pro.totalCost)) {return pro}else{return null}})
+      bestDetailSelectedCondition =bestDetailSelectedCondition?.filter(item => item !== null)[0]
+      discountPro= cartList[selectedIndex]?.selectedPromotion?.discountKey ==="invoice" && bestDetailSelectedCondition?.type==='%' ? (Number(bestDetailSelectedCondition?.discountValue) * Number(total)/100) : Number(bestDetailSelectedCondition?.discountValue) ;
+
+    }
+    // }
+   
+    let percentFee = otherfee?.listCost?.reduce((sum,fee)=>fee.type==="%"? sum + Number(fee.value):sum , 0);
+
+    let totalOtherFee = percentFee * (Number(total) - Number(cartList[selectedIndex].discount) - Number(discountPro))/100 +  otherFeeMoney
+
+    // let percentFee = otherfee?.listCost?.reduce((sum,fee)=>fee.type==="%"? sum + Number(fee.value):sum , 0);
+    // let totalOtherFee = percentFee * (Number(total) - Number(cartList[selectedIndex].discount) - Number(discountPro))/100 +  otherFeeMoney
+
+    newCartList = update(newCartList, {
+      [selectedIndex]: {
+        otherFee: { $set:totalOtherFee },
+      },
+    });
+
+    if(discountPro!==0){
+      newCartList = update(newCartList, {
+        [selectedIndex]: {
+          discountPro: { $set: discountPro },
+        },
+      }) 
+    }
+    // newCartList = update(newCartList, {
+    //   [selectedIndex]: {
+    //     otherFee: { $set:totalOtherFee },
+    //   },
+    // });
+
+    // if(discountPro!==0){
+    //   newCartList = update(newCartList, {
+    //     [selectedIndex]: {
+    //       discountPro: { $set: discountPro },
+    //     },
+    //   }) 
+    // }
+
+    if( defaultPaymentAmount){
+    newCartList = update(newCartList, {
+      [selectedIndex]: {
+        paid_amount: { $set: total - cartList[selectedIndex].discount -discountPro  + totalOtherFee },
+      },
+    }) };
+    // if( defaultPaymentAmount){
+    // newCartList = update(newCartList, {
+    //   [selectedIndex]: {
+    //     paid_amount: { $set: total - cartList[selectedIndex].discount -discountPro  + totalOtherFee },
+    //   },
+    // }) };
+    // 
+    if (store_setting?.customerScore.status) {
+      newCartList = update(newCartList, {
+        [selectedIndex]: {
+          scores: {
+            $set: parseInt(
+              (total - cartList[selectedIndex].discount -discountPro+ totalOtherFee) /
+                store_setting?.customerScore.value
+            ),
+          },
+        },
+      });
+    }
+    // if (store_setting?.customerScore.status) {
+    //   newCartList = update(newCartList, {
+    //     [selectedIndex]: {
+    //       scores: {
+    //         $set: parseInt(
+    //           (total - cartList[selectedIndex].discount -discountPro+ totalOtherFee) /
+    //             store_setting?.customerScore.value
+    //         ),
+    //       },
+    //     },
+    //   });
+    // }
+
+    // 
+    

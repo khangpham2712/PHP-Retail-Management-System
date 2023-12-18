@@ -1,0 +1,75 @@
+[
+    {
+        "name":"Cupcake",
+        "calories": 30,
+        "fat": 3.7,
+        "carbs": 67,
+        "protein": 4.3, 
+        "history":
+        [
+            { "date": "2020-01-05", "customerId": "11091700", "amount":3 },
+            {"date":  "2020-01-02", "customerId": "Anonymous", "amount": 1 }
+        ]
+    },
+    {
+        "name":"Donut",
+        "calories": 35,
+        "fat": 3.7,
+        "carbs": 67,
+        "protein": 4.3, 
+        "history":
+        [
+            { "date": "2020-01-03", "customerId": "11091700", "amount":3 },
+            {"date":  "2020-01-02", "customerId": "Anonymous", "amount": 1 }
+        ]
+    },
+    {
+        "name":"Eclair",
+        "calories": 305,
+        "fat": 3.7,
+        "carbs": 67,
+        "protein": 4.3, 
+        "history":
+        [
+            { "date": "2020-01-02", "customerId": "1101700", "amount":3 },
+            {"date":  "2020-01-02", "customerId": "Anonymous", "amount": 1 }
+        ]
+    },
+    {
+        "name":"Frozen yoghurt",
+        "calories": 325,
+        "fat": 3.7,
+        "carbs": 67,
+        "protein": 4.3, 
+        "history":
+        [
+            { "date": "2020-01-03", "customerId": "11091700", "amount":3 },
+            {"date":  "2020-01-02", "customerId": "Anonymous", "amount": 1 }
+        ]
+    },
+    {
+        "name":"Gingerbread",
+        "calories": 345,
+        "fat": 3.7,
+        "carbs": 67,
+        "protein": 4.3, 
+        "history":
+        [
+            { "date": "2020-01-05", "customerId": "11091700", "amount":3 },
+            {"date":  "2020-01-02", "customerId": "Anonymous", "amount": 1 }
+        ]
+    },
+    {
+        "name":"Honeycomb",
+        "calories": 105,
+        "fat": 3.7,
+        "carbs": 67,
+        "protein": 4.3, 
+        "history":
+        [
+            { "date": "2020-01-05", "customerId": "11091700", "amount":3 },
+            {"date":  "2020-01-02", "customerId": "Anonymous", "amount": 1 }
+        ]
+    }
+
+]
