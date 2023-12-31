@@ -9,7 +9,7 @@ docker run -d -p {host-port}:3000 --name metabase metabase/metabase
 
 ## Truy cập vào Metabase
 
-localhost ở port {host-port}
+Port {host-port}
 
 ## Đăng ký tài khoản
 
@@ -17,9 +17,17 @@ Làm theo các bước trên màn hình.
 
 Lưu ý: skip qua bước kết nối database, sẽ kết nối sau khi deploy app BKRM
 
-## Lấy secret key
+## Tạo dashboard rỗng
 
-## Gắn secret key vào iframe
+Dashboard này sẽ được dùng để embed vào web
+
+## Lấy thông tin cần thiết
+
+- Lấy secret key
+- Lấy host name của metabase
+- Publish dashboard vừa tạo ở bước trên, sau đó lấy id của dashboard
+
+## Gắn thông tin cần thiết vào iframe
 
 iframe trong ./bkrm-fe/src/views/ManagerView/Statistics/Metabase/Metabase.js
 
