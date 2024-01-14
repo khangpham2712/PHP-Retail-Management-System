@@ -1,3 +1,8 @@
+# Prerequisites
+
+- Docker
+- Metabase (nếu muốn tích hợp Metabase)
+
 # Setup Metabase
 
 ## Chạy Metabase bằng docker. Chạy lệnh
@@ -72,6 +77,10 @@ npm run build
 ```
 
 ## Copy tất cả files trong thư mục “build” của thư mục FE và paste vào trong thư mục “public" của thư mục BE (chọn Replace all files)
+
+```
+cp -r bkrm-fe/build/. bkrm-api/public
+```
 
 ## Chuyển đến thư mục BE
 
